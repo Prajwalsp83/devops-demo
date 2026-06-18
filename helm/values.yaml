@@ -1,6 +1,6 @@
 replicaCount: 2
 image:
-  repository: <ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/devops-demo-app
+  repository: 848104065212.dkr.ecr.ap-south-1.amazonaws.com/devops-demo-app
   tag: "latest"
   pullPolicy: IfNotPresent
 service:
