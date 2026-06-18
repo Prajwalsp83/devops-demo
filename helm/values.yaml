@@ -1,7 +1,7 @@
 replicaCount: 2
 image:
   repository: 848104065212.dkr.ecr.ap-south-1.amazonaws.com/devops-demo-app
-  tag: "v2"
+  tag: "71599bd77ef3e3e24deece109be4989fdc27e827"
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
