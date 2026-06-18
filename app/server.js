@@ -17,3 +17,13 @@ app.get("/metrics", (req, res) => {
   res.send(`# HELP app_requests_total Total requests served\n# TYPE app_requests_total counter\napp_requests_total ${requestCount}\n`);
 });
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
+
+app.get("/slow", (req, res) => {
+  const delay = parseInt(req.query.delay || "5000");
+  setTimeout(() => res.json({ message: "slow endpoint", delay_ms: delay }), delay);
+});
+
+app.get("/error", (req, res) => {
+  console.error("Intentional error at " + new Date().toISOString());
+  res.status(500).json({ error: "Database connection failed" });
+});
