@@ -5,7 +5,7 @@ let requestCount = 0;
 app.get("/", (req, res) => {
   requestCount++;
   res.json({
-    message: "Hello from the DevOps demo app!",
+    message: "Hello from the DevOps demo app2 v2 gitops deploy!",
     version: process.env.APP_VERSION || "1.0.0",
     pod: process.env.HOSTNAME || "unknown",
   });
