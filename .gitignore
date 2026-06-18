@@ -1,0 +1,9 @@
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log
+node_modules/
+trust.json
+*.bak
+.DS_Store

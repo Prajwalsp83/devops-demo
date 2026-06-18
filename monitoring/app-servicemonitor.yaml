@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: devops-demo-app
+  namespace: monitoring
+  labels:
+    release: kube-prom
+spec:
+  namespaceSelector:
+    matchNames: [demo]
+  selector:
+    matchLabels:
+      app: devops-demo-app
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s

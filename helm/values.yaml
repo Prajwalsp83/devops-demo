@@ -1,0 +1,27 @@
+replicaCount: 2
+image:
+  repository: <ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/devops-demo-app
+  tag: "latest"
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+resources:
+  requests: { cpu: 50m, memory: 64Mi }
+  limits: { cpu: 200m, memory: 128Mi }
+ingress:
+  enabled: true
+  className: nginx
+  host: demo.local
+  path: /
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 70
+otel:
+  endpoint: "http://tempo.monitoring.svc.cluster.local:4318"
+  serviceName: "devops-demo-app"
+livenessPath: /health
+readinessPath: /ready
