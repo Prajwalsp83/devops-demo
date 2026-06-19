@@ -28,12 +28,6 @@ app.get("/error", (req, res) => {
   res.status(500).json({ error: "Database connection failed" });
 });
 
-// Scenario 1: Memory leak (simulates data structure not being freed)
-let leakedData = [];
-app.get("/leak", (req, res) => {
-  leakedData.push(new Array(1000000).fill("leaked data"));
-  res.json({ message: "leaked data added", heap_mb: Math.round(process.memoryUsage().heapUsed / 1024 / 1024) });
-});
 
 // Scenario 2: Flaky endpoint (fails 40% of the time)
 app.get("/flaky", (req, res) => {
